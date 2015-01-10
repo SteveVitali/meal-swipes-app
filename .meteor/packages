@@ -5,7 +5,8 @@
 # but you can also edit it by hand.
 
 meteor-platform
-accounts-ui
-accounts-password
 iron:router
-bootstrap
+twbs:bootstrap
+accounts-password
+accounts-facebook
+ian:accounts-ui-bootstrap-3
