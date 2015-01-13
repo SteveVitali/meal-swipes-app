@@ -10,3 +10,4 @@ twbs:bootstrap
 accounts-password
 accounts-facebook
 ian:accounts-ui-bootstrap-3
+steeve:jquery-qrcode

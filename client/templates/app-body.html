@@ -19,6 +19,12 @@
     </div>
   </div>
   <div class="container">
-    <h1>Welcome to the Meal Swipes App</h1>
+    {{#if currentUser}}
+      <h1>Here's your QR code, {{currentUser.username}}</h1>
+      <div id="qr-code"></div>
+      <script>$('#qr-code').qrcode({ text: '{{currentUser._id}}' });</script>
+    {{else}}
+      <h1>Welcome to the Meal Swipes App</h1>
+    {{/if}}
   </div>
 </template>
