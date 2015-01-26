@@ -1,17 +1,16 @@
 Template.appBody.helpers({
 
   fratSubscriptions: function() {
-    var ids = Meteor.user().fraternity_subscriptions || [];
+    var subscriptions = Meteor.user().fraternity_subscriptions || [];
+    var ids = _.pluck(subscriptions, 'frat_id');
     return Fraternities.find({_id: {$in: ids}});
   },
 
   fratAdministrations: function() {
-    var ids = Meteor.user().fraternity_administrations || [];
-    return Fraternities.find({_id: {$in: ids}});
+    return Fraternities.find({admin: Meteor.userId()});
   },
 
   fratChefEmployments: function() {
-    console.log('user id', Meteor.userId());
     return Fraternities.find({chef: Meteor.userId()});
   }
 
@@ -20,5 +19,16 @@ Template.appBody.helpers({
 Template.appBody.events({
   'click .title-link': function(event, template) {
     $(event.target).parent().parent().next('.panel-body').toggle();
+  },
+
+  'click .register-frat': function(event, template) {
+    var fratName = template.$('.frat-name-input').val();
+    if (!fratName) return;
+
+    var exists = Fraternities.findOne({name: fratName});
+    if (exists)
+      return console.log('Fraternity already exists');
+
+    Meteor.call('addFraternity', fratName);
   }
 });

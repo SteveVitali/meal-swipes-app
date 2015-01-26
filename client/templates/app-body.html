@@ -42,8 +42,20 @@
         </div>
         <div class="panel-body">
           {{#each fratAdministrations}}
-            {{> fratAdministorView}}
+            {{> fratAdminView}}
           {{/each}}
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <button class="btn btn-default register-frat" type="button">
+                    Register Fraternity
+                  </button>
+                </span>
+                <input type="text" class="form-control frat-name-input" placeholder="Fraternity Name">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
