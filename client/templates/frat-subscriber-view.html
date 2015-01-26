@@ -5,7 +5,65 @@
         <h3 class="panel-title">{{name}}</h3>
       </a>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" style="display:none">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a class="title-link">
+            <h3 class="panel-title">Menu</h3>
+          </a>
+        </div>
+        <div class="panel-body" style="display:none">
+          Show menu options; request meal, including option for late plate
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a class="title-link">
+            <h3 class="panel-title">Meal Requests</h3>
+          </a>
+        </div>
+        <div class="panel-body" style="display:none">
+          View pending and past meal requests, sorted chronologically.
+          Here you can also rate and comment on past meals.
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a class="title-link">
+            <h3 class="panel-title">Check In</h3>
+          </a>
+        </div>
+        <div class="panel-body" style="display:none">
+          <div class="qr-code"></div>
+          <script>$('.qr-code').qrcode({ text: '{{currentUser._id}}' });</script>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a class="title-link">
+            <h3 class="panel-title">Activity</h3>
+          </a>
+        </div>
+        <div class="panel-body" style="display:none">
+          Place to view meal activity of other subscribers to the fraternity
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a class="title-link">
+            <h3 class="panel-title">Announcements</h3>
+          </a>
+        </div>
+        <div class="panel-body" style="display:none">
+          Place to view admin and chef announcements
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
