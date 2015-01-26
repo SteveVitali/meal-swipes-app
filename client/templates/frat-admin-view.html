@@ -6,9 +6,25 @@
       </a>
     </div>
     <div class="panel-body">
+      {{#if chef}}
+        <strong>Chef: </strong>{{chef}}
+      {{else}}
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button class="btn btn-default add-chef" type="button">
+                  Register Chef
+                </button>
+              </span>
+              <input type="text" class="form-control chef-username-input" placeholder="Chef Username">
+            </div>
+          </div>
+        </div>
+      {{/if}}
       <p>Subscribers</p>
       {{#each subscribers}}
-        {{this.userId}}
+        {{this.userId}}<br>
       {{/each}}
     </div>
   </div>
