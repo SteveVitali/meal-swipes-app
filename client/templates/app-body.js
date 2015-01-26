@@ -1,9 +1,7 @@
 Template.appBody.helpers({
 
   fratSubscriptions: function() {
-    var subscriptions = Meteor.user().fraternity_subscriptions || [];
-    var ids = _.pluck(subscriptions, 'frat_id');
-    return Fraternities.find({_id: {$in: ids}});
+    return Fraternities.find({ 'subscribers.user_id': Meteor.userId() });
   },
 
   fratAdministrations: function() {
@@ -21,8 +19,15 @@ Template.appBody.events({
     $(event.target).parent().parent().next('.panel-body').toggle();
   },
 
+  'click .subscribe-frat': function(event, template) {
+    var fratName = template.$('.subscribe-frat-input').val();
+    if (!fratName) return;
+
+    Meteor.call('subscribeToFraternity', fratName);
+  },
+
   'click .register-frat': function(event, template) {
-    var fratName = template.$('.frat-name-input').val();
+    var fratName = template.$('.register-frat-input').val();
     if (!fratName) return;
 
     var exists = Fraternities.findOne({name: fratName});
