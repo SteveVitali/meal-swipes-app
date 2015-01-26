@@ -1,7 +1,7 @@
 Template.appBody.helpers({
 
   fratSubscriptions: function() {
-    return Fraternities.find({ 'subscribers.user_id': Meteor.userId() });
+    return Fraternities.find({ 'subscribers.userId': Meteor.userId() });
   },
 
   fratAdministrations: function() {
