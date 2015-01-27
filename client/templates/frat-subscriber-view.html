@@ -14,7 +14,11 @@
           </a>
         </div>
         <div class="panel-body" style="display:none">
-          Show menu options; request meal, including option for late plate
+          [Show menu options; request meal, including option for late plate]
+          <br>
+          {{#each menu}}
+            {{> mealType}}
+          {{/each}}
         </div>
       </div>
 
@@ -25,8 +29,12 @@
           </a>
         </div>
         <div class="panel-body" style="display:none">
-          View pending and past meal requests, sorted chronologically.
-          Here you can also rate and comment on past meals.
+          [View pending and past meal requests, sorted chronologically.
+          Here you can also rate and comment on past meals.]
+          <br>
+          {{#each mealRequests}}
+            <strong>Request: </strong>
+          {{/each}}
         </div>
       </div>
 

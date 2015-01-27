@@ -4,4 +4,4 @@ Template.fratAdminView.events({
     if (!chefUsername) return;
     Meteor.call('addChefToFraternity', this._id, chefUsername);
   }
-})
+});
