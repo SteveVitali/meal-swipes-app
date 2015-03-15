@@ -14,7 +14,41 @@ Template.subscriberMealRequest.events({
   },
 
   'click .give-meal-feedback': function(event, template) {
-    console.log('open feedback form');
+    var mealFeedbackForm = {
+      template: Template.mealFeedbackForm,
+      title: 'Meal Feedback',
+      buttons: {
+        'cancel': {
+          class: 'btn-danger',
+          label: 'Cancel'
+        },
+        'submit': {
+          closeModalOnClick: true,
+          class: 'submit-feedback btn-info',
+          label: 'Submit Feedback'
+        },
+      },
+      removeOnHide: true,
+      doc: this
+    };
+
+    var formModal = ReactiveModal.initDialog(mealFeedbackForm);
+
+    $('.rating-slider').noUiSlider({
+      start: [5],
+      step: 1,
+      range: {
+        'min': [0],
+        'max': [10]
+      }
+    });
+
+    formModal.buttons.submit.on('click', function(button) {
+      console.log('ayy lmao');
+      console.log('slider value', $('#rating-slider').val());
+    });
+
+    formModal.show();
   },
 
   'click .claim-meal': function(event, template) {

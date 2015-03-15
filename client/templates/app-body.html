@@ -10,19 +10,25 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle brand" data-toggle="dropdown" role="button" aria-expanded="false">
+        {{#if currentUser}}
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown" role="button" aria-expanded="false">
+              Meal Swipes 
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="#" class="register-frat-form-btn">
+                  Register Fraternity
+                </a>
+              </li>
+            </ul>
+          </li>
+        {{else}}
+          <a href="#" class="navbar-brand">
             Meal Swipes 
-            <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu" role="menu">
-            <li>
-              <a href="#" class="register-frat-form-btn">
-                Register Fraternity
-              </a>
-            </li>
-          </ul>
-        </li>
+        {{/if}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {{> loginButtons}}
