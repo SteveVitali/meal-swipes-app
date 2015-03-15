@@ -13,17 +13,18 @@
       {{#if preparedAt}}
         {{#if receivedAt}}
           Received ({{formatDate receivedAt}})
-          <button class="view-meal-feedback btn btn-default btn-sm">
+          <button class="view-meal-feedback btn btn-default btn-sm float-right">
             View Feedback
           </button>
         {{else}}
-          Pending
-          <button class="btn btn-default btn-sm" disabled>
+          Prepared
+          <button class="btn btn-default btn-sm float-right" disabled>
             Feedback Pending
           </button>
         {{/if}}
       {{else}}
-        <button class="mark-as-prepared btn btn-default btn-sm">
+        Unprepared
+        <button class="mark-as-prepared btn btn-default btn-sm float-right">
           Mark as Prepared
         </button>
       {{/if}}

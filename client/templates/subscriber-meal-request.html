@@ -16,10 +16,17 @@
           Give Feedback
         </button>
       {{else}}
-        Pending
-        <button class="cancel-meal-req btn btn-default btn-sm float-right">
-          Cancel
-        </button>
+        {{#if preparedAt}}
+          Ready to eat
+          <button class="claim-meal btn btn-default btn-sm float-right">
+            Claim Meal
+          </button>
+        {{else}}
+          Pending Preparation
+          <button class="cancel-meal-req btn btn-default btn-sm float-right">
+            Cancel
+          </button>
+        {{/if}}
       {{/if}}
     </td>
   </tr>

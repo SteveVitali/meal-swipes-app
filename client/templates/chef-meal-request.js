@@ -8,9 +8,10 @@ Template.chefMealRequest.helpers({
   }
 });
 
-Template.subscriberMealRequest.events({
+Template.chefMealRequest.events({
   'click .mark-as-prepared': function(event, template) {
-    console.log('mark meal as prepared');
+    var frat = Template.parentData(1);
+    Meteor.call('markMealAsPrepared', frat, this);
   },
 
   'click .view-meal-feedback': function(event, template) {

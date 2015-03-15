@@ -1,0 +1,6 @@
+<template name="claimMealForm">
+  <div id="wrapper" style="text-align: center">    
+    <div class="qr-code" style="display: inline-block;"></div>
+  </div>
+  <script>$('.qr-code').qrcode({ text: '{{currentUser._id}}' });</script>
+</template>
