@@ -1,7 +1,21 @@
 <template name="appBody">
   <div class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Meal Swipes</a>
+      <ul class="nav navbar-nav">
+      <li class="dropdown">
+          <a href="#" class="dropdown-toggle brand" data-toggle="dropdown" role="button" aria-expanded="false">
+            Meal Swipes 
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="#" class="register-frat-form-btn">
+                Register Fraternity
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -11,7 +25,6 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {{> loginButtons}}
@@ -46,43 +59,35 @@
         </div>
       </div>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <a class="title-link">
-            <h3 class="panel-title">Administrator</h3>
-          </a>
-        </div>
-        <div class="panel-body">
-          {{#each fratAdministrations}}
-            {{> fratAdminView}}
-          {{/each}}
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="input-group">
-                <span class="input-group-btn">
-                  <button class="btn btn-default register-frat" type="button">
-                    Register Fraternity
-                  </button>
-                </span>
-                <input type="text" class="form-control register-frat-input" placeholder="Fraternity Name">
-              </div>
-            </div>
+      {{#if fratAdministrations.count}}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a class="title-link">
+              <h3 class="panel-title">Administrator</h3>
+            </a>
+          </div>
+          <div class="panel-body">
+            {{#each fratAdministrations}}
+              {{> fratAdminView}}
+            {{/each}}
           </div>
         </div>
-      </div>
+      {{/if}}
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <a class="title-link">
-            <h3 class="panel-title">Chef</h3>
-          </a>
+      {{#if fratChefEmployments.count}}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a class="title-link">
+              <h3 class="panel-title">Chef</h3>
+            </a>
+          </div>
+          <div class="panel-body">
+            {{#each fratChefEmployments}}
+              {{> fratChefView}}
+            {{/each}}
+          </div>
         </div>
-        <div class="panel-body">
-          {{#each fratChefEmployments}}
-            {{> fratChefView}}
-          {{/each}}
-        </div>
-      </div>
+      {{/if}}
 
     {{else}}
       <h1>Welcome to the Meal Swipes App</h1>

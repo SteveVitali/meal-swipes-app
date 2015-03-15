@@ -3,4 +3,4 @@ Template.mealType.events({
   	var frat = Template.parentData(1);
  	Meteor.call('submitMealRequest', this, frat._id);
   }
-})
+});

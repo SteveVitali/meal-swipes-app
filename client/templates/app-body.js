@@ -26,14 +26,38 @@ Template.appBody.events({
     Meteor.call('subscribeToFraternity', fratName);
   },
 
-  'click .register-frat': function(event, template) {
-    var fratName = template.$('.register-frat-input').val();
-    if (!fratName) return;
+  'click .register-frat-form-btn': function(event, template) {
+    var registrationForm = {
+      template: Template.registerFratForm,
+      title: 'Test title',
+      buttons: {
+        'cancel': {
+          class: 'btn-danger',
+          label: 'Cancel'
+        },
+        'register': {
+          closeModalOnClick: false,
+          class: 'register-frat btn-info',
+          label: 'Register'
+        }
+      }
+    };
 
-    var exists = Fraternities.findOne({name: fratName});
-    if (exists)
-      return console.log('Fraternity already exists');
+    var formModal = ReactiveModal.initDialog(registrationForm);
 
-    Meteor.call('addFraternity', fratName);
+    formModal.buttons.register.on('click', function(button) {
+      var fratName = $('.register-frat-input').val();
+      if (!fratName) return;
+
+      var exists = Fraternities.findOne({name: fratName});
+      if (exists) {
+        return console.log('Fraternity already exists');
+      }
+
+      Meteor.call('addFraternity', fratName);
+      formModal.hide();
+    });
+
+    formModal.show();
   }
 });
