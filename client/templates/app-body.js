@@ -30,7 +30,7 @@ Template.appBody.events({
   'click .register-frat-form-btn': function(event, template) {
     var registrationForm = {
       template: Template.registerFratForm,
-      title: 'Test title',
+      title: 'Register Fraternity',
       buttons: {
         'cancel': {
           class: 'btn-danger',

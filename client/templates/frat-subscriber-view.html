@@ -13,7 +13,6 @@
             <h3 class="panel-title">Menu</h3>
           </a>
         </div>
-        [Show menu options; request meal, including option for late plate]
         <table class="table table-striped">
           <tbody>
             <tr>
@@ -22,16 +21,7 @@
               <th>Time</th>
             </tr>
             {{#each menu}}
-              <tr>
-                <td>{{mainDish}}</td>
-                <td>{{details}}</td>
-                <td>
-                  {{mealTime}}
-                  <button class="request-meal btn btn-default btn-small float-right">
-                    Request
-                  </button>
-                </td>
-              </tr>
+              {{> mealType}}
             {{/each}}
           </tbody>
         </table>
@@ -43,42 +33,43 @@
             <h3 class="panel-title">Meal Requests</h3>
           </a>
         </div>
-        <div class="panel-body" style="display:none">
-          [View pending and past meal requests, sorted chronologically.
-          Here you can also rate and comment on past meals.]
-          <br>
-          <table class="table table-striped">
-            <tbody>
+        [View pending and past meal requests, sorted chronologically.
+        Here you can also rate and comment on past meals.]
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>Main Dish</th>
+              <th>Details</th>
+              <th>Status</th>
+            </tr>
+            {{#each mealRequests}}
               <tr>
-                <th>Main Dish</th>
-                <th>Details</th>
-                <th>Status</th>
-              </tr>
-              {{#each mealRequests}}
-                <tr>
-                  <td>
-                    {{mealType.mainDish}}
+                <td>
+                  {{mealType.mainDish}}
+                  {{#if isLatePlate}}
+                    (late plate)
+                  {{else}}
                     ({{mealType.mealTime}})
-                  </td>
-                  <td>{{mealType.details}}</td>
-                  <td>
-                    {{#if receivedAt}}
-                      Received ({{formatDate receivedAt}})
-                      <button class="give-meal-feedback btn btn-default btn-sm float-right">
-                        Give Feedback
-                      </button>
-                    {{else}}
-                      Pending
-                      <button class="cancel-meal-req btn btn-default btn-sm float-right">
-                        Cancel
-                      </button>
-                    {{/if}}
-                  </td>
-                </tr>
-              {{/each}}
-            </tbody>
-          </table>
-        </div>
+                  {{/if}}
+                </td>
+                <td>{{mealType.details}}</td>
+                <td>
+                  {{#if receivedAt}}
+                    Received ({{formatDate receivedAt}})
+                    <button class="give-meal-feedback btn btn-default btn-sm float-right">
+                      Give Feedback
+                    </button>
+                  {{else}}
+                    Pending
+                    <button class="cancel-meal-req btn btn-default btn-sm float-right">
+                      Cancel
+                    </button>
+                  {{/if}}
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
       </div>
 
       <div class="panel panel-default">

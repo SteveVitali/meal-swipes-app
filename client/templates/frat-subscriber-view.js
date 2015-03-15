@@ -21,9 +21,5 @@ Template.fratSubscriberView.events({
 
   'click .give-meal-feedback': function(event, template) {
     console.log('open feedback form');
-  },
-
-  'click .request-meal': function(event, template) {
-    console.log('requesting meal');
   }
 });
