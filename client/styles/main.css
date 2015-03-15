@@ -1,4 +1,8 @@
 a.title-link {
-	color: black;
-	cursor: pointer;
+  color: black;
+  cursor: pointer;
+}
+
+.float-right {
+  float: right;
 }

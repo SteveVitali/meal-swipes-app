@@ -13,13 +13,28 @@
             <h3 class="panel-title">Menu</h3>
           </a>
         </div>
-        <div class="panel-body" style="display:none">
-          [Show menu options; request meal, including option for late plate]
-          <br>
-          {{#each menu}}
-            {{> mealType}}
-          {{/each}}
-        </div>
+        [Show menu options; request meal, including option for late plate]
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>Main Dish</th>
+              <th>Details</th>
+              <th>Time</th>
+            </tr>
+            {{#each menu}}
+              <tr>
+                <td>{{mainDish}}</td>
+                <td>{{details}}</td>
+                <td>
+                  {{mealTime}}
+                  <button class="request-meal btn btn-default btn-small float-right">
+                    Request
+                  </button>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
       </div>
 
       <div class="panel panel-default">
@@ -32,9 +47,37 @@
           [View pending and past meal requests, sorted chronologically.
           Here you can also rate and comment on past meals.]
           <br>
-          {{#each mealRequests}}
-            <strong>Request: </strong>
-          {{/each}}
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <th>Main Dish</th>
+                <th>Details</th>
+                <th>Status</th>
+              </tr>
+              {{#each mealRequests}}
+                <tr>
+                  <td>
+                    {{mealType.mainDish}}
+                    ({{mealType.mealTime}})
+                  </td>
+                  <td>{{mealType.details}}</td>
+                  <td>
+                    {{#if receivedAt}}
+                      Received ({{formatDate receivedAt}})
+                      <button class="give-meal-feedback btn btn-default btn-sm float-right">
+                        Give Feedback
+                      </button>
+                    {{else}}
+                      Pending
+                      <button class="cancel-meal-req btn btn-default btn-sm float-right">
+                        Cancel
+                      </button>
+                    {{/if}}
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
         </div>
       </div>
 

@@ -17,6 +17,7 @@ Template.appBody.helpers({
 Template.appBody.events({
   'click .title-link': function(event, template) {
     $(event.target).parent().parent().next('.panel-body').toggle();
+    $(event.target).parent().parent().next('.table').toggle();
   },
 
   'click .subscribe-frat': function(event, template) {
