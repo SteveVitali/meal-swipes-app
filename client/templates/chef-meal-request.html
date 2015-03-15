@@ -1,0 +1,32 @@
+<template name="chefMealRequest">
+  <tr>
+    <td>
+      {{mealType.mainDish}}
+      {{#if isLatePlate}}
+        (late plate)
+      {{else}}
+        ({{mealType.mealTime}})
+      {{/if}}
+    </td>
+    <td>{{mealType.details}}</td>
+    <td>
+      {{#if preparedAt}}
+        {{#if receivedAt}}
+          Received ({{formatDate receivedAt}})
+          <button class="view-meal-feedback btn btn-default btn-sm">
+            View Feedback
+          </button>
+        {{else}}
+          Pending
+          <button class="btn btn-default btn-sm" disabled>
+            Feedback Pending
+          </button>
+        {{/if}}
+      {{else}}
+        <button class="mark-as-prepared btn btn-default btn-sm">
+          Mark as Prepared
+        </button>
+      {{/if}}
+    </td>
+  </tr>
+</template>

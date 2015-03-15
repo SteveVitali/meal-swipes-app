@@ -14,8 +14,6 @@
         </a>
       </div>
       <div class="panel-body" style="display:none">
-        Place to create, view, edit, and delete meals for
-        breakfast, lunch, and dinner
         {{#autoForm collection="Fraternities" id="updateMealsForm" doc=this type="update"}}
           {{> afArrayField name='menu'}}
           <button type="submit" class="btn btn-primary">Update</button>
@@ -33,6 +31,18 @@
         Place to view pending and complete meal requests,
         including ability to mark meals as complete, and ability
         to read feedback on meals.
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>Main Dish</th>
+              <th>Details</th>
+              <th>Status</th>
+            </tr>
+            {{#each mealRequests}}
+              {{> chefMealRequest}}
+            {{/each}}
+          </tbody>
+        </table>
       </div>
     </div>
 

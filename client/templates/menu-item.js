@@ -1,4 +1,4 @@
-Template.mealType.events({
+Template.menuItem.events({
   'click .request-meal': function(event, template) {
     var requestMealForm = {
       template: Template.requestMealForm,
