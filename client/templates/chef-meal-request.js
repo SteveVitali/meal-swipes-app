@@ -15,6 +15,21 @@ Template.chefMealRequest.events({
   },
 
   'click .view-meal-feedback': function(event, template) {
-    console.log('open feedback data');
+    var mealFeedbackData = {
+      template: Template.mealFeedbackData,
+      title: 'Meal Feedback',
+      buttons: {
+        'close': {
+          closeModalOnClick: true,
+          class: 'btn-info',
+          label: 'Close'
+        },
+      },
+      removeOnHide: true,
+      doc: this
+    };
+
+    var formModal = ReactiveModal.initDialog(mealFeedbackData);
+    formModal.show();
   }
 });

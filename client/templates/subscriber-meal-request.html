@@ -12,9 +12,15 @@
     <td>
       {{#if receivedAt}}
         Received ({{formatDate receivedAt}})
-        <button class="give-meal-feedback btn btn-default btn-sm float-right">
-          Give Feedback
-        </button>
+        {{#if rating}}
+          <button class="btn btn-default btn-sm float-right" disabled>
+            Feedback Sent
+          </button>
+        {{else}}
+          <button class="give-meal-feedback btn btn-default btn-sm float-right">
+            Give Feedback
+          </button>
+        {{/if}}
       {{else}}
         {{#if preparedAt}}
           Ready to eat
