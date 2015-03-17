@@ -38,14 +38,23 @@ Template.subscriberMealRequest.events({
       start: [5],
       step: 1,
       range: {
-        'min': [0],
+        'min': [1],
         'max': [10]
       }
     });
 
+    $('.rating-slider').Link('lower').to(
+      '-inline-<div class="slider-tooltip"></div>', 
+      function (val) {
+        $(this).html('<span>' + val + '</span>');
+      }
+    );
+
+    var meal = this;
     formModal.buttons.submit.on('click', function(button) {
-      console.log('ayy lmao');
-      console.log('slider value', $('#rating-slider').val());
+      var rating = $('.rating-slider').val();
+      var feedback = $('.feedback-input').val();
+      Meteor.call('rateMeal', meal, rating, feedback);
     });
 
     formModal.show();
